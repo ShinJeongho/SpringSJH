@@ -22,4 +22,14 @@ public class StudentService {
 		}
 		return students;
 	}
+
+	public void addStudent(StudentDTO student) {
+		try {
+			studentDAO.addStudent(student);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }

@@ -1,12 +1,15 @@
 package com.winter.app.student;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDAO {
+
 	public List<StudentDTO> getStudents() throws Exception {
 		List<StudentDTO> studentList = new ArrayList<StudentDTO>();
 
@@ -36,6 +39,19 @@ public class StudentDAO {
 		fr.close();
 
 		return studentList;
+
+	}
+
+	public void addStudent(StudentDTO student) throws Exception {
+		File file = new File("C:\\study\\student.txt");
+		FileWriter fw = new FileWriter(file, true);
+		BufferedWriter bw = new BufferedWriter(fw);
+
+		bw.write(student.getNum() + "-" + student.getName() + "-" + student.getAvg());
+		bw.newLine();
+		bw.flush();
+		bw.close();
+		fw.close();
 
 	}
 
