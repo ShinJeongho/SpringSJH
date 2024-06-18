@@ -1,6 +1,5 @@
 package com.winter.app.student;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -8,13 +7,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentService {
 
-	private List<StudentDTO> students = new ArrayList<StudentDTO>();
+	private StudentDAO studentDAO;
 
-	public List<StudentDTO> getList() {
-		return students;
+	public StudentService() {
+		studentDAO = new StudentDAO();
 	}
 
-	public void addStudent(StudentDTO student) {
-		students.add(student);
+	public List<StudentDTO> getStudents() {
+		List<StudentDTO> students = null;
+		try {
+			students = studentDAO.getStudents();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return students;
 	}
 }

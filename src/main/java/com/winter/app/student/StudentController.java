@@ -1,5 +1,7 @@
 package com.winter.app.student;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +16,8 @@ public class StudentController {
 
 	@RequestMapping("/student/list") // /student/list URL 경로에 대한 GET 요청을 처리합니다.
 	public String getList(HttpServletRequest request) {
-		System.out.println("list 가져오기");
-
-		request.setAttribute("list", studentService.getList()); // 학생 목록을 요청 속성에 설정합니다.
+		List<StudentDTO> ar = studentService.getStudents();
+		request.setAttribute("list", ar);
 
 		return "student/list"; // student/list 뷰를 반환합니다.
 	}
@@ -32,13 +33,13 @@ public class StudentController {
 		int num = Integer.parseInt(request.getParameter("num"));// 요청에서 num 파라미터를 가져와 정수로 변환합니다.
 		double avg = Double.parseDouble(request.getParameter("avg")); // 요청에서 avg 파라미터를 가져와 실수로 변환합니다.
 
-		StudentDTO student = new StudentDTO();
-		student.setName(name);
-		student.setNum(num);
-		student.setAvg(avg);
+		StudentDTO student = new StudentDTO(); // 새로운 StudentDTO 객체를 생성합니다.
+		student.setName(name);// 학생 이름을 설정합니다.
+		student.setNum(num); // 학생 넘버를 설정합니다.
+		student.setAvg(avg); // 학생 평균을 설정합니다.
 
-		studentService.addStudent(student);
+		// studentService.addStudent(student); // 학생을 추가합니다.
 
-		return "redirect:/student/list";
+		return "redirect:/student/list"; // 학생 목록 페이지로 리디렉션합니다.
 	}
 }
