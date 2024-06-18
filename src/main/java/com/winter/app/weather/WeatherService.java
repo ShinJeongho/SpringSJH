@@ -1,5 +1,7 @@
 package com.winter.app.weather;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,13 +12,21 @@ public class WeatherService {
 	private WeatherDAO dao;
 	
 	
-	public void getList() {
-		System.out.println("service list");
+	public List<WeatherDTO> getList() {
+		List<WeatherDTO> dtos = null;
+		try {
+			dtos = dao.getList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dtos;
 		
 	}
 	
 	public void getDetail() {
-		System.out.println("service list");
+		
+		dao.getDetail();
 		
 	}
 
