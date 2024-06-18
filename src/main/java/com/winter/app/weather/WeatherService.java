@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class WeatherService {
 	
@@ -24,10 +25,41 @@ public class WeatherService {
 		
 	}
 	
-	public void getDetail() {
+	public WeatherDTO getDetail(WeatherDTO dto) {
 		
-		dao.getDetail();
+		try {
+			dto = dao.getDetail(dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			dto = null;
+		}
+		return dto;
+	}
+	
+	public void getAdd(WeatherDTO dto) {
+		try {
+			dao.getAdd(dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void getDelete(WeatherDTO dto) {
 		
+		try {
+			dao.getDelete(dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void getUpdate(WeatherDTO dto) {
+		
+		try {
+			dao.getUpdate(dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
