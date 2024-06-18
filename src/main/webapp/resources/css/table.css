@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.tbl {
+	width: 50%;
+	border: solid black 2px;
+	border-spacing: 0;
+	margin: 10px auto;
+	border-collapse: collapse; /* 겹치는 선을 제거하는 용도 */
+}
+
+.tbl td, .tbl th {
+	height: 100px;
+	border: dashed palevioletred 1px;
+	text-align: center;
+}
+
+.d1 {
+	width: 20%;
+	margin: 10px auto;
+}
