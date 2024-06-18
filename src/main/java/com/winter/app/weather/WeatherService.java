@@ -14,5 +14,10 @@ public class WeatherService {
 		System.out.println("service list");
 		
 	}
+	
+	public void getDetail() {
+		System.out.println("service list");
+		
+	}
 
 }
